@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Mail\StudentFoundMail;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardController extends Controller
@@ -23,6 +25,7 @@ class DashboardController extends Controller
             // dd($results);
             if ($results->count()) {
                 Alert::success('Success', 'Student Record found');
+                Mail::to(auth()->user()->email)->send(new StudentFoundMail);
             } else {
                 Alert::error('Failed', 'Student does not exist');
             }
@@ -31,5 +34,6 @@ class DashboardController extends Controller
         return view('dashboard', [
             'students' => $results,
         ]);
+
     }
 }
