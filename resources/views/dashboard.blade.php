@@ -51,7 +51,8 @@
                                             <div class="w-full px-4">
                                                 <p class="font-light leading-relaxed text-slate-600 mb-4">This confirms
                                                     that {{ $student->fname }} {{ $student->lname }}
-                                                    ({{ $student->regno }})
+
+                                                               ({{ $student->regno }})
                                                     is a past student of the University of Cape Coast. He
                                                     was admitted in {{ substr($student->doa, -4) }} to pursue a
                                                     {{ $student->program->program_type->comment }} in
