@@ -1,12 +1,13 @@
 @component('mail::message')
-# Introduction
+    # Introduction
 
-The body of your message.
+    
+    Insert student details here
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
-
-Thanks,<br>
-{{ config('app.name') }}
+    @component('mail::button', ['url' => ''])
+        DOWNLOAD PDF
+    @endcomponent
+    e
+    Thanks,<br>
+    {{ config('app.name') }}
 @endcomponent

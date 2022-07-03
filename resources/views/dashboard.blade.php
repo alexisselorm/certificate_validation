@@ -7,20 +7,20 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-gray-400 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form method="GET" action="/dashboard" class="space-y-2">
                         <x-input id="query" name="query" type="search" value="{{ request()->get('query') }}"
-                            placeholder="Type a Certificate number" class="block w-full" />
+                            placeholder="Type a Certificate number or Index Number" class="block w-full" />
                         <x-button>Search</x-button>
                     </form>
                 </div>
                 <!-- component -->
-                @if ($students)
+                @if ($student)
                     <div
                         class="relative max-w-md mx-auto md:max-w-2xl mt-6 min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-16">
-                        @if ($students->count())
-                            @foreach ($students as $student)
+                        @if ($student->count())
+                            {{-- @foreach ($student as $student) --}}
                                 <div class="px-6">
                                     <div class="flex flex-wrap justify-center">
                                         <div class="w-full flex justify-center">
@@ -41,10 +41,10 @@
                                     <div class="text-center mt-2">
                                         <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">
                                             {{ $student->fname }} {{ $student->lname }}</h3>
-                                        <div class="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
+                                        {{-- <div class="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
                                             <i class="fas fa-map-marker-alt mr-2 text-slate-400 opacity-75"></i>Paris,
                                             France
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="mt-6 py-6 border-t border-slate-200 text-center">
                                         <div class="flex flex-wrap justify-center">
@@ -52,7 +52,7 @@
                                                 <p class="font-light leading-relaxed text-slate-600 mb-4">This confirms
                                                     that {{ $student->fname }} {{ $student->lname }}
 
-                                                               ({{ $student->regno }})
+                                                    ({{ $student->regno }})
                                                     is a past student of the University of Cape Coast. He
                                                     was admitted in {{ substr($student->doa, -4) }} to pursue a
                                                     {{ $student->program->program_type->comment }} in
@@ -68,9 +68,9 @@
                                                                 @if ($student->cgpa >= 3.6)
                                                                     <span>First Class Honours</span>
                                                                 @elseif ($student->cgpa >= 3.0)
-                                                                    <span>Second Upper, Upper Divison</span>
+                                                                    <span>Second Class, Upper Divison</span>
                                                                 @elseif ($student->cgpa >= 2.5)
-                                                                    <span>Second Lower, Lower Division</span>
+                                                                    <span>Second Class, Lower Division</span>
                                                                 @elseif ($student->cgpa >= 2.0)
                                                                     <span>Third Class</span>
                                                                 @else
@@ -88,10 +88,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                            @else
+                            {{-- @endforeach --}}
+                        @else
                             <p>No student was found</p>
-                            @endif
+                        @endif
                     </div>
                 @endif
 
