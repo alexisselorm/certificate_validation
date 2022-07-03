@@ -10,6 +10,7 @@
             <div class="bg-gray-400 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form method="GET" action="/dashboard" class="space-y-2">
+          
                         <x-input id="query" name="query" type="search" value="{{ request()->get('query') }}"
                             placeholder="Type a Certificate number or Index Number" class="block w-full" />
                         <x-button>Search</x-button>
@@ -20,7 +21,7 @@
                     <div
                         class="relative max-w-md mx-auto md:max-w-2xl mt-6 min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-16">
                         @if ($student->count())
-                            {{-- @foreach ($student as $student) --}}
+                            @foreach ($student as $student)
                                 <div class="px-6">
                                     <div class="flex flex-wrap justify-center">
                                         <div class="w-full flex justify-center">
@@ -82,13 +83,15 @@
                                                         @endif
                                                     </span>
                                                 </p>
+                                                <a href="/download">
                                                 <x-button>DOWNLOAD
                                                     PDF</x-button>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            {{-- @endforeach --}}
+                            @endforeach
                         @else
                             <p>No student was found</p>
                         @endif

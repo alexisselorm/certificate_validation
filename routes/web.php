@@ -12,18 +12,17 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-Route::middleware('guest')->group(function(){
+ */
+Route::middleware('guest')->group(function () {
     Route::get('/', function () {
         return view('auth.login');
     });
 });
 
-
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+// // })->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
 
-Route::get('/dashboard', DashboardController::class)->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
+Route::get('/download', [DashboardController::class,'downloadPDF']);
+require __DIR__ . '/auth.php';
