@@ -24,5 +24,5 @@ Route::middleware('guest')->group(function () {
 // // })->middleware(['auth'])->name('dashboard');
 Route::get('/dashboard', [DashboardController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
 
-Route::get('/download', [DashboardController::class,'downloadPDF']);
+Route::get('/download/{student}', [DashboardController::class,'downloadPDF']);
 require __DIR__ . '/auth.php';

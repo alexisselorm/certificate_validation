@@ -25,11 +25,11 @@ class DashboardController extends Controller
                         ->with('program', 'program.program_run_type', 'program.program_type')
                         ->where('cert_no', $query)
                         ->orWhere('regno', $query);
-                })->get();
+                })->first();
             if ($results->count()) {
                 Alert::success('Success', 'Student Record found');
                 Mail::to(auth()->user()->email)->send(new StudentFoundMail);
-                Session::put('student', $results[0]);
+                // Session::put('student', $results[0]);
 
             } else {
                 Alert::error('Failed', 'Student does not exist');
@@ -42,9 +42,20 @@ class DashboardController extends Controller
         ]);
 
     }
-    public function downloadPDF()
+    public function downloadPDF(Student $student)
     {
-        $student = Session::get('student');
+        // $student = Session::get('student');
+
+        // Address Validations
+        // $address = $request->validate([
+        //     'address' => 'required',
+        //     'box'=>'required',
+        //     'location'=>'required'
+        // ]);
+        // $address['student'] = $student->cert_no;
+
+
+
         $pdf = PDF::loadView('student', compact('student'));
         return $pdf->download($student->fname . ' ' . $student->lname.'.pdf');
 
