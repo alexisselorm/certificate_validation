@@ -22,7 +22,7 @@ Route::middleware('guest')->group(function () {
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // // })->middleware(['auth'])->name('dashboard');
-Route::get('/dashboard', [DashboardController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
-Route::get('/download/{student}', [DashboardController::class,'downloadPDF']);
+Route::post('/download/{student}', [DashboardController::class, 'downloadPDF']);
 require __DIR__ . '/auth.php';

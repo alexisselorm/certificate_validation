@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Mail\StudentFoundMail;
+use App\Models\Address;
 use App\Models\Student;
-use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Session;
+use PDF;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardController extends Controller
@@ -42,22 +42,23 @@ class DashboardController extends Controller
         ]);
 
     }
-    public function downloadPDF(Student $student)
+    public function downloadPDF(Student $student, Request $request)
     {
         // $student = Session::get('student');
 
         // Address Validations
-        // $address = $request->validate([
-        //     'address' => 'required',
-        //     'box'=>'required',
-        //     'location'=>'required'
-        // ]);
-        // $address['student'] = $student->cert_no;
+        $address = $request->validate([
+            'address' => 'required',
+            'box' => 'required',
+            'location' => 'required',
+        ]);
+        $address['student'] = $student->cert_no;
 
+        dd($address);
+        Address::create($address);
 
-
-        $pdf = PDF::loadView('student', compact('student'));
-        return $pdf->download($student->fname . ' ' . $student->lname.'.pdf');
+        $pdf = PDF::loadView('student', compact('student', 'address'));
+        return $pdf->download($student->fname . ' ' . $student->lname . '.pdf');
 
     }
 }
