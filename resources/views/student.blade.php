@@ -76,12 +76,11 @@ Telegram & Cables  University, Cape Coast
         <tr>
             <td>
                 <pre>
-Administrative Manager
-Cocoa Health and Extension Division
-(COCOBOD)
-P.O.Box 3197
-Accra
-                </pre>
+{{ $address['name'] }}
+{{ $address['box'] }}
+{{ $address['location'] }}
+
+</pre>
             </td>
             <td></td>
             <td></td>
