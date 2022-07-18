@@ -2,17 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\StudentFoundMail;
+use PDF;
 use App\Models\Address;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Helpers\RequestHelper;
+use App\Mail\StudentFoundMail;
 use Illuminate\Support\Facades\Mail;
-use PDF;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
 {
-    public $student;
+    private $helper;
+
+    public function __construct(RequestHelper $helper)
+    {
+        $this->helper = $helper;
+    }
+
+    // Helper Functions
+    public function validations()
+    {
+        return [
+            'name' => 'required',
+            'box' => 'required',
+            'location' => 'required',
+        ];
+    }
     //
     public function dashboard(Request $request)
     {
@@ -47,14 +64,18 @@ class DashboardController extends Controller
         // $student = Session::get('student');
 
         // Address Validations
-        $address = $request->validate([
-            'address' => 'required',
-            'box' => 'required',
-            'location' => 'required',
+        $address = $request->only([
+            'name',
+            'box',
+            'location',
         ]);
         $address['student'] = $student->cert_no;
 
-        dd($address);
+        $validate = Validator::make($address, $this->validations());
+        if ($validate->fails()) {
+            return $this->helper->failResponse($validate->errors()->first());
+        }
+        // dd($address);
         Address::create($address);
 
         $pdf = PDF::loadView('student', compact('student', 'address'));
