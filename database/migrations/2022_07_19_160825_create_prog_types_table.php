@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProgRuntypesTable extends Migration
+class CreateProgTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -26,6 +26,6 @@ class CreateProgRuntypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prog_runtypes');
+        Schema::dropIfExists('prog_types');
     }
 }
