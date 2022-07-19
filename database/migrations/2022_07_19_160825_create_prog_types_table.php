@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateProgRuntypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('program_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('comment', 50);
-            $table->timestamps();
+        Schema::create('prog_types', function (Blueprint $table) {
+            $table->increments('type');
+            $table->string('comment', 50)->default('');
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('program_types');
+        Schema::dropIfExists('prog_runtypes');
     }
-};
+}

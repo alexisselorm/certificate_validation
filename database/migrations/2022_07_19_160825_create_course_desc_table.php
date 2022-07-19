@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateCourseDescTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('program_run_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('comment', 50);
-            $table->timestamps();
+        Schema::create('course_desc', function (Blueprint $table) {
+            $table->unsignedInteger('courseid')->default(0)->index('courseid');
+            $table->text('description')->nullable();
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('program_run_types');
+        Schema::dropIfExists('course_desc');
     }
-};
+}
