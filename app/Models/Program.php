@@ -11,6 +11,8 @@ class Program extends Model
     use HasFactory;
     use Searchable;
 
+    protected $table = 'prog_db';
+
      public function program_run_type()
     {
         return $this->belongsTo(ProgramRunType::class);

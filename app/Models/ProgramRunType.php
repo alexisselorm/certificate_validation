@@ -11,6 +11,8 @@ class ProgramRunType extends Model
     use HasFactory;
     use Searchable;
 
+    protected $table='prog_runtypes';
+
     public function program()
     {
         return $this->hasMany(Program::class, 'program_run_type_id');

@@ -11,7 +11,8 @@ class Student extends Model
     use HasFactory;
     use Searchable;
 
-   
+   protected $table='students_db';
+
     public function program()
     {
         return $this->belongsTo(Program::class);

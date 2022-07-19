@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
-use Laravel\Scout\Searchable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class ProgramType extends Model
 {
     use HasFactory;
     use Searchable;
+
+    protected $table = 'prog_types';
 
     public function program()
     {
