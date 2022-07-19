@@ -69,7 +69,7 @@ class DashboardController extends Controller
             'box',
             'location',
         ]);
-        $address['student'] = $student->cert_no;
+        $address['student'] = $student->regno;
 
         $validate = Validator::make($address, $this->validations());
         if ($validate->fails()) {
