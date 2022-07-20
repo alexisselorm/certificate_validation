@@ -14,7 +14,8 @@ class CreateProgRuntypesTable extends Migration
     public function up()
     {
         Schema::create('prog_runtypes', function (Blueprint $table) {
-            $table->increments('runtype');
+            // $table->increments('runtype');
+            $table->id('runtype');
             $table->string('comment', 50)->default('');
         });
     }

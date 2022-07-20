@@ -17,4 +17,11 @@ class Student extends Model
     {
         return $this->belongsTo(Program::class);
     }
+
+    public function toSearchableArray()
+{
+    return [
+        'studid' => $this->studid,
+    ];
+}
 }

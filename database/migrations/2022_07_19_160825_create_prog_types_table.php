@@ -14,7 +14,8 @@ class CreateProgTypesTable extends Migration
     public function up()
     {
         Schema::create('prog_types', function (Blueprint $table) {
-            $table->increments('type');
+            // $table->increments('types');
+            $table->id('type');
             $table->string('comment', 50)->default('');
         });
     }
