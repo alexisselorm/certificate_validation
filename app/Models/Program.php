@@ -12,6 +12,7 @@ class Program extends Model
     use Searchable;
 
     protected $table = 'prog_db';
+    protected $primaryKey = 'progid';
 
      public function program_run_type()
     {

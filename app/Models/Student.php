@@ -10,8 +10,9 @@ class Student extends Model
 {
     use HasFactory;
     use Searchable;
+    protected $primaryKey = 'studid';
 
-   protected $table='students_db';
+    protected $table = 'students_db';
 
     public function program()
     {
@@ -19,9 +20,9 @@ class Student extends Model
     }
 
     public function toSearchableArray()
-{
-    return [
-        'studid' => $this->studid,
-    ];
-}
+    {
+        return [
+            'studid' => $this->studid,
+        ];
+    }
 }

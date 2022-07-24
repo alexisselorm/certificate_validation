@@ -1,13 +1,13 @@
 #!/usr/bin/bash
 
-php artisan scout:flush "App\Models\Student"
-php artisan scout:flush "App\Models\Program"
-php artisan scout:flush "App\Models\ProgramType"
-php artisan scout:flush "App\Models\ProgramRunType"
+# php artisan scout:flush "App\Models\Student"
+# php artisan scout:flush "App\Models\Program"
+# php artisan scout:flush "App\Models\ProgramType"
+# php artisan scout:flush "App\Models\ProgramRunType"
 
 
-# php artisan scout:import "App\Models\Student"
-# php artisan scout:import "App\Models\Program"
+php artisan scout:import "App\Models\Student"
+php artisan scout:import "App\Models\Program"
 # php artisan scout:import "App\Models\ProgramType"
 # php artisan scout:import "App\Models\ProgramRunType"
 
