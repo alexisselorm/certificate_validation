@@ -34,14 +34,14 @@
                                         <div class="flex justify-center lg:pt-4 pt-8 pb-0">
 
                                             <div class="p-3 text-center">
-                                                <span class="text-sm text-slate-400">{{ $student->regno }}</span>
+                                                <span class="text-sm text-slate-400">{{ $student?->regno }}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-center mt-2">
                                     <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">
-                                        {{ $student->fname }} {{ $student->lname }}</h3>
+                                        {{ $student?->fname }} {{ $student?->lname }}</h3>
                                     {{-- <div class="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
                                             <i class="fas fa-map-marker-alt mr-2 text-slate-400 opacity-75"></i>Paris,
                                             France
@@ -51,28 +51,28 @@
                                     <div class="flex flex-wrap justify-center">
                                         <div class="w-full px-4">
                                             <p class="font-light leading-relaxed text-slate-600 mb-4">This confirms
-                                                that {{ $student->fname }} {{ $student->lname }}
+                                                that {{ $student?->fname }} {{ $student?->lname }}
 
-                                                ({{ $student->regno }})
-                                                is a past student of the University of Cape Coast. He
-                                                was admitted in {{ substr($student->doa, -4) }} to pursue a
-                                                {{ $student->program->program_type->comment }} in
-                                                {{ $student->program->long_name }}.
+                                                ({{ $student?->regno }})
+                                                is a past student? of the University of Cape Coast. He
+                                                was admitted in {{ substr($student?->doa, -4) }} to pursue a
+                                                {{ $student?->program->program_type->comment }} in
+                                                {{ $student?->program->long_name }}.
 
-                                                <span>{{ $student->lname }} wrote and passed the final
+                                                <span>{{ $student?->lname }} wrote and passed the final
                                                     examinations in
-                                                    {{ substr($student->doc, -4) }} and was accordingly admitted
+                                                    {{ substr($student?->doc, -4) }} and was accordingly admitted
                                                     to the degree of
-                                                    {{ $student->program->program_type->comment }}
-                                                    @if ($student->program->program_type->comment === 'BACHELOR')
+                                                    {{ $student?->program->program_type->comment }}
+                                                    @if ($student?->program->program_type->comment === 'BACHELOR')
                                                         <span>with
-                                                            @if ($student->cgpa >= 3.6)
+                                                            @if ($student?->cgpa >= 3.6)
                                                                 <span>First Class Honours</span>
-                                                            @elseif ($student->cgpa >= 3.0)
+                                                            @elseif ($student?->cgpa >= 3.0)
                                                                 <span>Second Class, Upper Divison</span>
-                                                            @elseif ($student->cgpa >= 2.5)
+                                                            @elseif ($student?->cgpa >= 2.5)
                                                                 <span>Second Class, Lower Division</span>
-                                                            @elseif ($student->cgpa >= 2.0)
+                                                            @elseif ($student?->cgpa >= 2.0)
                                                                 <span>Third Class</span>
                                                             @else
                                                                 <span> a Pass</span>
@@ -83,7 +83,7 @@
                                                     @endif
                                                 </span>
                                             </p>
-                                            {{-- <a href="/download/{{ $student->id }}">
+                                            {{-- <a href="/download/{{ $student?->id }}">
                                                 <x-button>DOWNLOAD
                                                     PDF</x-button>
                                             </a> --}}
@@ -106,7 +106,7 @@
                                                             <h3 class="text-lg font-medium leading-6 text-gray-900">
                                                                 Enter Recipient Address Here
                                                             </h3>
-                                                            <form action="/download/{{ $student->id }}"
+                                                            <form action="/download/{{ $student?->id }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <div class="mt-2">
@@ -153,7 +153,7 @@
                             </div>
                             {{-- @endforeach --}}
                         @else
-                            <p>No student was found</p>
+                            <p>No student? was found</p>
                         @endif
                     </div>
                 @endif

@@ -15,7 +15,7 @@ class ProgramType extends Model
 
     public function program()
     {
-        return $this->hasMany(Program::class, 'program_type_id');
+        return $this->hasMany(Program::class);
     }
 
 }

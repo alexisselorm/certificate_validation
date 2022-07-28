@@ -16,16 +16,15 @@ class Program extends Model
 
      public function program_run_type()
     {
-        return $this->belongsTo(ProgramRunType::class);
+        return $this->belongsTo(ProgramRunType::class,'runtype','runtype');
     }
     public function program_type()
     {
-        return $this->belongsTo(ProgramType::class);
+        return $this->belongsTo(ProgramType::class,'progtype','type');
     }
     public function student()
     {
-        return $this->hasMany(Student::class, 'program_id');
-
+        return $this->hasMany(Student::class, 'progid');
     }
 
 }

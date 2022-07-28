@@ -13,16 +13,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::middleware('guest')->group(function () {
-    Route::get('/', function () {
-        return view('auth.login');
-    });
-});
+// Route::middleware('guest')->group(function () {
+//     Route::get('/', function () {
+//         return view('auth.login');
+//     });
+// });
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // // })->middleware(['auth'])->name('dashboard');
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 Route::post('/download/{student}', [DashboardController::class, 'downloadPDF']);
 require __DIR__ . '/auth.php';

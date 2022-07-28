@@ -16,13 +16,14 @@ class Student extends Model
 
     public function program()
     {
-        return $this->belongsTo(Program::class);
+        return $this->belongsTo(Program::class,'progid');
     }
 
-    public function toSearchableArray()
-    {
-        return [
-            'studid' => $this->studid,
-        ];
-    }
+    // public function toSearchableArray()
+    // {
+    //     return [
+    //         'studid' => $this->studid,
+
+    //     ];
+    // }
 }

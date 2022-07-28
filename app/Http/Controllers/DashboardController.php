@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use PDF;
+use App\Helpers\RequestHelper;
+use App\Mail\StudentFoundMail;
 use App\Models\Address;
 use App\Models\Student;
 use Illuminate\Http\Request;
-use App\Helpers\RequestHelper;
-use App\Mail\StudentFoundMail;
 use Illuminate\Support\Facades\Mail;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+use PDF;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardController extends Controller
 {
@@ -43,9 +43,10 @@ class DashboardController extends Controller
                         ->where('cert_no', $query)
                         ->orWhere('regno', $query);
                 })->first();
+            dd($results);
             if ($results->count()) {
                 Alert::success('Success', 'Student Record found');
-                Mail::to(auth()->user()->email)->send(new StudentFoundMail);
+                // Mail::to(auth()->user()->email)->send(new StudentFoundMail);
                 // Session::put('student', $results[0]);
 
             } else {

@@ -15,7 +15,7 @@ class ProgramRunType extends Model
 
     public function program()
     {
-        return $this->hasMany(Program::class, 'program_run_type_id');
+        return $this->hasMany(Program::class);
     }
 
 }
