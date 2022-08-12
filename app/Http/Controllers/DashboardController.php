@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\RequestHelper;
-use App\Mail\StudentFoundMail;
 use App\Models\Address;
 use App\Models\Student;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use PDF;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -34,6 +33,15 @@ class DashboardController extends Controller
     public function dashboard(Request $request)
     {
         $results = null;
+        // RAW DATABASE QUERY using INNER JOIN
+        $lequery = DB::table('students_db')
+            ->join('prog_db', 'prog_db.progid', '=', 'students_db.progid')
+            ->join('prog_runtypes', 'prog_runtypes.runtype', '=', 'prog_db.runtype')
+            ->join('prog_types', 'prog_types.type', '=', 'prog_db.progtype')
+            ->select('students_db.*', 'prog_db.long_name', 'prog_runtypes.comment', 'prog_types.comment')
+            ->where('studid', '000000000002070')
+            ->first();
+
         $query = $request->get('query');
         if ($query) {
             $results = Student::search($query)
