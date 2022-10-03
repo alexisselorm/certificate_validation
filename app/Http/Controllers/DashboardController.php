@@ -34,13 +34,13 @@ class DashboardController extends Controller
     {
         $results = null;
         // RAW DATABASE QUERY using INNER JOIN
-        $lequery = DB::table('students_db')
-            ->join('prog_db', 'prog_db.progid', '=', 'students_db.progid')
-            ->join('prog_runtypes', 'prog_runtypes.runtype', '=', 'prog_db.runtype')
-            ->join('prog_types', 'prog_types.type', '=', 'prog_db.progtype')
-            ->select('students_db.*', 'prog_db.long_name', 'prog_runtypes.comment', 'prog_types.comment')
-            ->where('studid', '000000000002070')
-            ->first();
+        // $lequery = DB::table('students_db')
+        //     ->join('prog_db', 'prog_db.progid', '=', 'students_db.progid')
+        //     ->join('prog_runtypes', 'prog_runtypes.runtype', '=', 'prog_db.runtype')
+        //     ->join('prog_types', 'prog_types.type', '=', 'prog_db.progtype')
+        //     ->select('students_db.*', 'prog_db.long_name', 'prog_runtypes.comment', 'prog_types.comment')
+        //     ->where('studid', '000000000002070')
+        //     ->first();
 
         $query = $request->get('query');
         if ($query) {
